@@ -23,14 +23,12 @@ public class EmployeeController {
 
     @GetMapping("/employees")
     public ResponseEntity<List<EmployeeDto>> getAllEmployees() {
-        log.info("Employee getAllEmployees");
         List<EmployeeDto> employeeDtoList = employeeService.getAllEmployees();
         return ResponseEntity.ok(employeeDtoList);
     }
 
     @PostMapping("/add-employee")
     public ResponseEntity<?> addEmployee(@RequestBody EmployeeDto employeeDto) throws IOException {
-        log.info("Employee addEmployee employeeDto {}", employeeDto);
         try {
             EmployeeDto employeeDto1 = employeeService.addEmployee(employeeDto);
             return ResponseEntity.status(HttpStatus.CREATED).body(employeeDto1);
